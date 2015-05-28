@@ -38,3 +38,18 @@ var hexadecimalConverter = function(input) {
   }
   return decimalNum;
 }
+
+
+$(document).ready(function() {
+
+  $("#base-converter").submit(function(event) {
+    var number = $("input#input-number").val();
+    var base = parseInt($("input#input-base").val());
+    var output = baseConverter(number, base);
+    $(".output").text(output);
+    $("#result").slideDown("slow");
+    $(".panel").fadeIn("slow");
+    event.preventDefault();
+  });
+
+});
