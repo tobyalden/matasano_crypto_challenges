@@ -33,3 +33,12 @@ describe("baseConverter", function() {
     expect(baseConverter("292", 10)).to.equal(292);
   });
 });
+
+describe("decimalToBinary", function() {
+  it("will take a given decimal number and return it as binary", function() {
+    expect(decimalToBinary(59)).to.equal("111011");
+    expect(decimalToBinary(16)).to.equal("10000");
+    expect(decimalToBinary(32)).to.equal("100000");
+    expect(decimalToBinary(567)).to.equal("1000110111");
+  });
+});

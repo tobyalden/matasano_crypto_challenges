@@ -11,6 +11,30 @@ var baseConverter = function(input, base) {
   return decimalNum;
 }
 
+var decimalToBinary = function(decimalNum) {
+
+  var i = 0;
+
+  while(Math.pow(2, i + 1) - 1 < decimalNum) {
+    i++;
+  }
+  var binaryString = "";
+
+  while(i >= 0) {
+    if(decimalNum >= Math.pow(2, i)) {
+      binaryString = binaryString.concat("1");
+      decimalNum -= Math.pow(2, i);
+    } else {
+      binaryString = binaryString.concat("0");
+    }
+      i--;
+  }
+  return binaryString;
+}
+
+
+
+
 // the functions below still work, but are made redundant by baseConverter
 
 var binaryConverter = function(binaryString) {
