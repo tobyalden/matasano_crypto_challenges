@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Word Order</title>
+    <title>Number Converter</title>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
        <link rel="stylesheet" href="./css/styles.css" type="text/css">
        <script src="js/jquery-1.11.3.js"></script>
@@ -9,14 +9,27 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>Word Order</h1>
+        <h1>Number Converter</h1>
         <p class="lead">A simple program to convert numbers in any base to decimal.<br></p>
         <form id="base-converter">
           <div class="form-group">
               <label for="input-number"><b>Number:</b></label>
               <input id="input-number" type="text">
               <label for="input-base"><b>Base:</b></label>
-              <input id="input-base" type="text">
+              <select id="input-base">
+                <option value="2">Binary</option>
+                <option value="3">Ternary</option>
+                <option value="4">Quaternary</option>
+                <option value="5">Quinary</option>
+                <option value="6">Senary</option>
+                <option value="8">Octal</option>
+                <option value="11">Undecimal</option>
+                <option value="12">Duodecimal</option>
+                <option value="13">Tridecimal</option>
+                <option value="14">Tetradecimal</option>
+                <option value="15">Pentadecimal</option>
+                <option value="16">Hexadecimal</option>
+              </select>
           </div>
           <div id="result">
             <div class="alert alert-info"><p><b>Decimal:</b> <em><span class="output"></span></em> </p></div>
