@@ -18,14 +18,18 @@ describe("trinaryConverter", function() {
   });
 });
 
-describe("upToBaseTenConverter", function() {
-  it("will return the given string in any base under 11 as a decimal number", function() {
-    expect(upToBaseTenConverter("1322", 4)).to.equal(122);
-  })
-});
-
 describe("hexadecimalConverter", function() {
   it("will return the given hexadecimal string as a decimal number", function() {
     expect(hexadecimalConverter("73f")).to.equal(1855);
-  })
+  });
+});
+
+describe("baseConverter", function() {
+  it("will return the given string and base as a decimal number", function() {
+    expect(baseConverter("0117", 8)).to.equal(79);
+    expect(baseConverter("CF", 16)).to.equal(207);
+    expect(baseConverter("21222", 3)).to.equal(215);
+    expect(baseConverter("12A", 12)).to.equal(178);
+    expect(baseConverter("292", 10)).to.equal(292);
+  });
 });

@@ -1,3 +1,17 @@
+var charLookup = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "a": 10, "b": 11, "c": 12, "d": 13, "e": 14, "f": 15, "g": 16}
+
+var baseConverter = function(input, base) {
+  input = input.toLowerCase()
+  var baseArray = input.split("").reverse();
+  var decimalNum = 0;
+  for(var i = 0; i < baseArray.length; i++) {
+    decimalNum += Math.pow(base, i) * charLookup[baseArray[i]];
+  }
+  return decimalNum;
+}
+
+// the functions below still work, but are made redundant by baseConverter
+
 var binaryConverter = function(binaryString) {
   var binaryArray = binaryString.split("").reverse();
   var decimalNum = 0;
@@ -16,17 +30,7 @@ var trinaryConverter = function(trinaryString) {
   return decimalNum;
 }
 
-var upToBaseTenConverter = function(baseString, base) {
-  var baseArray = baseString.split("").reverse();
-  var decimalNum = 0;
-  for(var i = 0; i < baseArray.length; i++) {
-      decimalNum += Math.pow(base, i) * parseInt(baseArray[i]);
-  }
-  return decimalNum;
-}
-
 var hexadecimalConverter = function(input) {
-  var charLookup = {"1": 1,"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "a": 10, "b": 11, "c": 12, "d": 13, "e": 14, "f": 15, "g": 16}
   var hexArray = input.split("").reverse();
   var decimalNum = 0;
   for(var i = 0; i < hexArray.length; i++) {
@@ -34,9 +38,3 @@ var hexadecimalConverter = function(input) {
   }
   return decimalNum;
 }
-
-
-// var characterToNumber = function(character) {
-//   outputNumber = character
-//   characterLookup = {"1": 1,"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "a": 10, "b": 11, "c": 12, "d": 13, "e": 14, "f": 15, "g": 16}
-// }
