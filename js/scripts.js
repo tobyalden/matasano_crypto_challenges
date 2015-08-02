@@ -11,70 +11,44 @@ var baseConverter = function(input, base) {
   return decimalNum;
 }
 
-var decimalToBinary = function(decimalNum) {
-
+var hexToBase64 = function(hexString) {
+  debugger;
+  decimalNum = baseConverter(hexString, 16);
   var i = 0;
-
-  while(Math.pow(2, i + 1) - 1 < decimalNum) {
+  while(Math.pow(64, i) < decimalNum) {
     i++;
   }
-  var binaryString = "";
+  if(i > 0) {
+    i--;
+  }
+
+  var base64String = "";
 
   while(i >= 0) {
-    if(decimalNum >= Math.pow(2, i)) {
-      binaryString = binaryString.concat("1");
-      decimalNum -= Math.pow(2, i);
-    } else {
-      binaryString = binaryString.concat("0");
-    }
-      i--;
+    debugger;
+    integerQuotient = Math.floor(decimalNum / Math.pow(64, i))
+    remainder = decimalNum%(Math.pow(64, i));
+    base64String = base64String.concat(getBase64Character(integerQuotient));
+    decimalNum -= Math.pow(64, i) * integerQuotient;
+    i--;
   }
-  return binaryString;
+
+  return base64String;
+
 }
 
-
-
-
-// the functions below still work, but are made redundant by baseConverter
-
-var binaryConverter = function(binaryString) {
-  var binaryArray = binaryString.split("").reverse();
-  var decimalNum = 0;
-  for(var i = 0; i < binaryArray.length; i++) {
-    decimalNum += Math.pow(2, i) * parseInt(binaryArray[i]);
-  }
-  return decimalNum;
+var base64Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321+/";
+var getBase64Character = function(decimalNum) {
+  return base64Alphabet.split("")[decimalNum];
 }
-
-var trinaryConverter = function(trinaryString) {
-  var trinaryArray = trinaryString.split("").reverse();
-  var decimalNum = 0;
-  for(var i = 0; i < trinaryArray.length; i++) {
-    decimalNum += Math.pow(3, i) * parseInt(trinaryArray[i]);
-  }
-  return decimalNum;
-}
-
-var hexadecimalConverter = function(input) {
-  var hexArray = input.split("").reverse();
-  var decimalNum = 0;
-  for(var i = 0; i < hexArray.length; i++) {
-    decimalNum += Math.pow(16, i) * charLookup[hexArray[i]];
-  }
-  return decimalNum;
-}
-
 
 $(document).ready(function() {
 
   $("#base-converter").submit(function(event) {
-    var number = $("input#input-number").val();
-    var base = parseInt($("#input-base").val());
-    var output = baseConverter(number, base);
-    $(".output").text(output);
-    $("#result").slideDown("slow");
-    $(".panel").fadeIn("slow");
     event.preventDefault();
+    var hex = $("input#input-number").val();
+    var output = hexToBase64(hex);
+    $(".output").text(output);
   });
 
 });
